@@ -1,0 +1,9 @@
+$kind: collection
+description: |-
+  Koleksi endpoint REST API Laundry (Pelanggan, Layanan, Pesanan).
+  Jalankan server dulu (npm run dev), lalu klik Run collection. Urutan request sudah diatur agar ID otomatis tersimpan ke variable.
+variables:
+  baseUrl: http://localhost:3000/api
+  pelangganId: "1"
+  layananId: "1"
+  pesananId: "1"

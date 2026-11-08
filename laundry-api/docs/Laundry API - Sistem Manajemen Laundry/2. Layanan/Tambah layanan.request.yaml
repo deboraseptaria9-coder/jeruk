@@ -1,0 +1,24 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/layanan"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nama_layanan": "Cuci Karpet",
+      "satuan": "pcs",
+      "harga": 40000,
+      "estimasi_hari": 4,
+      "deskripsi": "Karpet ukuran sedang"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status 201', () => pm.response.to.have.status(201));
+      pm.test('Format JSON standar', () => pm.expect(pm.response.json()).to.have.property('success'));
+      pm.collectionVariables.set('layananId', pm.response.json().data.id);
+    language: text/javascript
+order: 3000

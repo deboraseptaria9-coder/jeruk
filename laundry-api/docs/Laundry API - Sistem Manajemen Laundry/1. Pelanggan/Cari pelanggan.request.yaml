@@ -1,0 +1,13 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/pelanggan?search=budi"
+method: GET
+queryParams:
+  search: budi
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status 200', () => pm.response.to.have.status(200));
+      pm.test('Format JSON standar', () => pm.expect(pm.response.json()).to.have.property('success'));
+    language: text/javascript
+order: 2000

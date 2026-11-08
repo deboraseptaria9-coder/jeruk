@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: 29e3098b-cd5a-46f8-86e9-2a844d9bafd9
+
+localResources:
+  collections:
+    - ../laundry-api/docs/Laundry API - Sistem Manajemen Laundry

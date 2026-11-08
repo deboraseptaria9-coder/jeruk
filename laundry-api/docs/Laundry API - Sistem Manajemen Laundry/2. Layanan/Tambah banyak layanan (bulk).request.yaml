@@ -1,0 +1,32 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/layanan/bulk"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "layanan": [
+        {
+          "nama_layanan": "Cuci Boneka",
+          "satuan": "pcs",
+          "harga": 15000,
+          "estimasi_hari": 3
+        },
+        {
+          "nama_layanan": "Dry Clean Jas",
+          "satuan": "pcs",
+          "harga": 35000,
+          "estimasi_hari": 3
+        }
+      ]
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status 201', () => pm.response.to.have.status(201));
+      pm.test('Format JSON standar', () => pm.expect(pm.response.json()).to.have.property('success'));
+    language: text/javascript
+order: 4000

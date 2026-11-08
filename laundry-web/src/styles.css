@@ -1,0 +1,207 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — "LaundryKu"
+ * Fresh linen background, deep ocean ink, soapy aqua accents.
+ * All colors in oklch. Status colors are semantic tokens (status-*).
+ */
+
+@theme inline {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Plus Jakarta Sans", ui-sans-serif, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-overlay: var(--overlay);
+
+  --color-status-diterima: var(--status-diterima);
+  --color-status-dicuci: var(--status-dicuci);
+  --color-status-disetrika: var(--status-disetrika);
+  --color-status-selesai: var(--status-selesai);
+  --color-status-diambil: var(--status-diambil);
+  --color-status-dibatalkan: var(--status-dibatalkan);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --shadow-soft: 0 1px 2px oklch(0.3 0.05 230 / 6%), 0 8px 24px -12px oklch(0.3 0.05 230 / 18%);
+  --shadow-lift: 0 2px 4px oklch(0.3 0.05 230 / 8%), 0 20px 40px -20px oklch(0.3 0.08 230 / 35%);
+}
+
+:root {
+  --radius: 0.875rem;
+  --background: oklch(0.982 0.008 85);
+  --foreground: oklch(0.24 0.045 240);
+  --card: oklch(0.997 0.003 85);
+  --card-foreground: oklch(0.24 0.045 240);
+  --popover: oklch(0.997 0.003 85);
+  --popover-foreground: oklch(0.24 0.045 240);
+  --primary: oklch(0.46 0.11 228);
+  --primary-foreground: oklch(0.985 0.01 220);
+  --secondary: oklch(0.94 0.03 205);
+  --secondary-foreground: oklch(0.3 0.07 230);
+  --muted: oklch(0.95 0.01 85);
+  --muted-foreground: oklch(0.5 0.03 240);
+  --accent: oklch(0.86 0.09 195);
+  --accent-foreground: oklch(0.26 0.06 225);
+  --destructive: oklch(0.58 0.2 25);
+  --destructive-foreground: oklch(0.985 0.01 25);
+  --success: oklch(0.6 0.13 160);
+  --success-foreground: oklch(0.985 0.02 160);
+  --warning: oklch(0.72 0.15 70);
+  --warning-foreground: oklch(0.25 0.05 70);
+  --border: oklch(0.9 0.015 85);
+  --input: oklch(0.88 0.018 85);
+  --ring: oklch(0.6 0.11 210);
+  --overlay: oklch(0.2 0.04 240 / 45%);
+
+  --status-diterima: oklch(0.55 0.12 250);
+  --status-dicuci: oklch(0.58 0.12 210);
+  --status-disetrika: oklch(0.65 0.15 60);
+  --status-selesai: oklch(0.58 0.13 160);
+  --status-diambil: oklch(0.5 0.03 240);
+  --status-dibatalkan: oklch(0.58 0.2 25);
+
+  --chart-1: oklch(0.46 0.11 228);
+  --chart-2: oklch(0.7 0.1 195);
+  --chart-3: oklch(0.65 0.15 60);
+  --chart-4: oklch(0.58 0.13 160);
+  --chart-5: oklch(0.58 0.2 25);
+  --sidebar: oklch(0.97 0.01 85);
+  --sidebar-foreground: oklch(0.24 0.045 240);
+  --sidebar-primary: oklch(0.46 0.11 228);
+  --sidebar-primary-foreground: oklch(0.985 0.01 220);
+  --sidebar-accent: oklch(0.94 0.03 205);
+  --sidebar-accent-foreground: oklch(0.3 0.07 230);
+  --sidebar-border: oklch(0.9 0.015 85);
+  --sidebar-ring: oklch(0.6 0.11 210);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(circle at 8% 0%, oklch(0.9 0.06 200 / 45%) 0, transparent 32rem),
+      radial-gradient(circle at 100% 20%, oklch(0.93 0.04 85 / 70%) 0, transparent 28rem);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+@utility shadow-lift {
+  box-shadow: var(--shadow-lift);
+}
+
+@utility bubble-bg {
+  background-image:
+    radial-gradient(circle at 20% 30%, oklch(1 0 0 / 35%) 0 0.6rem, transparent 0.65rem),
+    radial-gradient(circle at 70% 70%, oklch(1 0 0 / 25%) 0 1.1rem, transparent 1.15rem),
+    radial-gradient(circle at 88% 22%, oklch(1 0 0 / 30%) 0 0.4rem, transparent 0.45rem),
+    linear-gradient(135deg, var(--primary), oklch(0.58 0.11 205));
+}
+
+/* Halaman autentikasi LaundryKu */
+.login-shell { min-height: 100vh; display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(420px, .98fr); background: #f8faf8; }
+.login-visual { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; min-height: 100vh; padding: clamp(2rem, 5vw, 4.5rem); color: #f5fbf9; background: linear-gradient(145deg, #102f3d 0%, #164c5a 52%, #1b7880 100%); }
+.login-visual::before { position: absolute; inset: 0; content: ""; opacity: .18; background-image: radial-gradient(#c7f8ec 1px, transparent 1px); background-size: 24px 24px; mask-image: linear-gradient(120deg, black, transparent 78%); }
+.login-brand, .login-mobile-brand { position: relative; z-index: 1; display: flex; align-items: center; gap: .75rem; font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; letter-spacing: -.04em; }
+.login-brand-icon { display: inline-flex; width: 2.8rem; height: 2.8rem; align-items: center; justify-content: center; border: 1px solid #d2f5ed55; border-radius: 1rem; color: #b8f2e2; background: #c5f9ec18; }
+.login-brand-light { color: #8be0ca; }
+.login-message { position: relative; z-index: 1; max-width: 600px; margin: auto 0; padding: 4rem 0; }
+.login-eyebrow { display: inline-flex; align-items: center; gap: .55rem; color: #a9e6d9; font-size: .68rem; font-weight: 800; letter-spacing: .18em; }
+.login-eyebrow span { width: .45rem; height: .45rem; border-radius: 99px; background: #78d9bf; box-shadow: 0 0 16px #78d9bf; }
+.login-message h1 { margin: 1.35rem 0 1rem; color: #f4fbf8; font-size: clamp(2.7rem, 5vw, 4.8rem); line-height: 1.05; letter-spacing: -.055em; }
+.login-message h1 em { color: #91ddc8; font-style: normal; }
+.login-message p { max-width: 400px; color: #c0d8d6; font-size: 1rem; line-height: 1.8; }
+.login-visual-footer { position: relative; z-index: 1; color: #b5d0ce; font-size: .8rem; }
+.login-orbit { position: absolute; width: 32rem; height: 32rem; border: 1px solid #d2f5ed18; border-radius: 50%; }
+.orbit-one { right: -18rem; top: 8%; box-shadow: 0 0 0 50px #d2f5ed08, 0 0 0 100px #d2f5ed06; }
+.orbit-two { left: -28rem; bottom: -27rem; width: 48rem; height: 48rem; border-color: #d2f5ed12; }
+.login-panel { display: flex; align-items: center; justify-content: center; padding: 3rem clamp(1.5rem, 6vw, 6rem); }
+.login-card { width: min(100%, 420px); }
+.login-mobile-brand { display: none; margin-bottom: 3rem; color: #173c48; }
+.login-heading-icon { display: flex; width: 3rem; height: 3rem; align-items: center; justify-content: center; margin-bottom: 1.5rem; border: 1px solid #d8ebe5; border-radius: 1rem; color: #257969; background: #eaf6f1; }
+.login-kicker { margin: 0 0 .45rem; color: #3b8d7a; font-size: .68rem; font-weight: 800; letter-spacing: .14em; }
+.login-card h2 { margin: 0; color: #183944; font-size: 2rem; letter-spacing: -.045em; }
+.login-subtitle { margin: .6rem 0 2rem; color: #72858a; font-size: .91rem; }
+.login-form { display: flex; flex-direction: column; gap: .65rem; }
+.login-label { color: #294750; font-size: .8rem; font-weight: 700; }
+.login-input { width: 100%; height: 3.15rem; padding: 0 .95rem; border: 1px solid #d9e4e1; border-radius: .8rem; outline: none; color: #193a44; background: #fff; font: inherit; font-size: .88rem; transition: border-color .18s, box-shadow .18s; }
+.login-input::placeholder { color: #a1afb0; }
+.login-input:focus { border-color: #3e9b87; box-shadow: 0 0 0 3px #68c5a522; }
+.login-password-label { display: flex; justify-content: space-between; margin-top: .6rem; }
+.login-password-wrap { position: relative; }
+.login-password-wrap .login-input { padding-right: 3.2rem; }
+.login-eye { position: absolute; top: 50%; right: .8rem; display: flex; padding: .35rem; transform: translateY(-50%); border: 0; color: #819396; background: transparent; cursor: pointer; }
+.login-eye:hover { color: #247866; }
+.login-error { margin-top: .4rem; padding: .7rem .8rem; border: 1px solid #efcaca; border-radius: .7rem; color: #a33f3f; background: #fff4f3; font-size: .8rem; }
+.login-submit { display: flex; height: 3.2rem; align-items: center; justify-content: center; gap: .7rem; margin-top: .85rem; border: 0; border-radius: .8rem; color: white; background: linear-gradient(100deg, #1d675f, #268b78); box-shadow: 0 8px 20px #247c6b2c; font: inherit; font-size: .88rem; font-weight: 750; cursor: pointer; transition: transform .18s, box-shadow .18s; }
+.login-submit:hover { transform: translateY(-1px); box-shadow: 0 11px 22px #247c6b42; }
+.login-submit:disabled { opacity: .65; cursor: wait; }
+.login-security { display: flex; align-items: center; justify-content: center; gap: .4rem; margin-top: 1.5rem; color: #78908e; font-size: .73rem; }
+.login-copy { margin-top: 3.5rem; color: #9aa9a8; text-align: center; font-size: .7rem; }
+@media (max-width: 820px) { .login-shell { grid-template-columns: 1fr; } .login-visual { display: none; } .login-panel { min-height: 100vh; padding: 2rem 1.5rem; } .login-mobile-brand { display: flex; margin-bottom: 3.5rem; } }
+@media (max-width: 420px) { .login-card h2 { font-size: 1.75rem; } .login-mobile-brand { margin-bottom: 2.5rem; } .login-copy { margin-top: 2.5rem; } }

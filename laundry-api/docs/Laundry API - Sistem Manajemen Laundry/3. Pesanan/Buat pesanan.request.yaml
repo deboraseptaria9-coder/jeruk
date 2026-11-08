@@ -1,0 +1,26 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/pesanan"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "pelanggan_id": "{{pelangganId}}",
+      "layanan_id": "{{layananId}}",
+      "jumlah": 2,
+      "catatan": "Karpet ruang tamu"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status 201', () => pm.response.to.have.status(201));
+      pm.test('Format JSON standar', () => pm.expect(pm.response.json()).to.have.property('success'));
+      const d = pm.response.json().data;
+      pm.collectionVariables.set('pesananId', d.id);
+      pm.test('Total = jumlah x harga', () => pm.expect(d.total_harga).to.eql(d.jumlah * d.harga_satuan));
+      pm.test('Kode otomatis', () => pm.expect(d.kode_pesanan).to.match(/^LDR-/));
+    language: text/javascript
+order: 3000

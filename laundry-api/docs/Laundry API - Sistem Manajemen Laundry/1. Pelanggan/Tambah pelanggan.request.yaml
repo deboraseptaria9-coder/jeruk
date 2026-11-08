@@ -1,0 +1,22 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/pelanggan"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nama": "Dewi Lestari",
+      "no_hp": "08{{$timestamp}}",
+      "alamat": "Jl. Melati No. 7"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status 201', () => pm.response.to.have.status(201));
+      pm.test('Format JSON standar', () => pm.expect(pm.response.json()).to.have.property('success'));
+      pm.collectionVariables.set('pelangganId', pm.response.json().data.id);
+    language: text/javascript
+order: 3000
